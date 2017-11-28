@@ -27,8 +27,6 @@ void Start()
     bulletPos.x = -999;
     score = 0;
     
-    //PlayBGM()関数でBGMを再生する(実装：HW16A207 森本義基)
-    PlayBGM("bgm_maoudamashii_8bit07.mp3");
 }
 
 // 1/60秒ごとに呼ばれる関数です。モデルの更新と画面の描画を行います。
@@ -40,19 +38,26 @@ void Update()
         PlaySound("se_maoudamashii_explosion03.mp3"); //PlaySound()関数を使って、弾の発射時とターゲットに当たった時にSEを再生する。(H)(実装:HW16A072 黒津 勇斗)
     }
 
-    // 弾の移動
+    // 弾の移動(実装:HW16A097 新甚礁太)
     if (bulletPos.x > -999) {
-        bulletPos.x += 10 * Time::deltaTime;
+        bulletPos.x += 200 * Time::deltaTime;
 
         // ターゲットと弾の当たり判定
         Rect bulletRect(bulletPos, Vector2(32, 20));
         if (targetRect.Overlaps(bulletRect)) {
-            score += 1;         // スコアの加算
+            score += 100;         // スコアの加算
             bulletPos.x = -999; // 弾を発射可能な状態に戻す
             PlaySound("se_maoudamashii_explosion06.mp3"); //追加文
         }
+        if(bulletPos.x >= 320){
+            bulletPos.x = -999;
+        }
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> bbe1f69e15914b9de54c76daef40c4b855da44e6
     //雲の位置を左から右に動かす。見えなくなったら左端に戻す(実装：HW16A207 森本義基)
     if (cloudPos.x > -550) {
         cloudPos.x += 60 * Time::deltaTime;
@@ -61,8 +66,11 @@ void Update()
         }
     }
     
+<<<<<<< HEAD
 
     
+=======
+>>>>>>> bbe1f69e15914b9de54c76daef40c4b855da44e6
     // TODO: 砲台を青い壁に沿って上下に動かす。(C)(実装:HW16A209 谷津 峻哉)
     if (cannonPos.y < -149) {
         ca = 0;
@@ -91,14 +99,23 @@ void Update()
     // 砲台の描画
     FillRect(Rect(cannonPos.x-10, -140, 20, 100), Color::blue);
     DrawImage("cannon.png", cannonPos);
-
+    
     // ターゲットの描画
     FillRect(targetRect, Color::red);
 
     // スコアの描画
     // TODO: スコアのサイズを大きくする。(E)(実装:HW16A209 谷津 峻哉)
+<<<<<<< HEAD
     SetFont("nicoca_v1.ttf", 100.0f);
     DrawText(FormatString("%02d", score), Vector2(-319, 129), Color::black);
     DrawText(FormatString("%02d", score), Vector2(-320, 130), Color::white);
+=======
+    SetFont("nicoca_v1.ttf", 150.0f);
+    //スコア5桁(実装:HW16A097 新甚礁太)
+    DrawText(FormatString("%05d", score), Vector2(-319, 199), Color::black);
+    DrawText(FormatString("%05d", score), Vector2(-320, 200), Color::white);
+    
+
+>>>>>>> bbe1f69e15914b9de54c76daef40c4b855da44e6
 }
 
