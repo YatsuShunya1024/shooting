@@ -1,8 +1,6 @@
 #include "Game.hpp"
 
 
-<<<<<<< HEAD
-=======
 // TODO: 砲台の位置を画面左に、ターゲットの位置を画面右に移動させる。(A)(実装:HW16A072 黒津 勇斗)
 // TODO: 雲の位置を左から右に動かす。見えなくなったら左端に戻す。(B)(実装:HW16A207 森本 義基)
 // TODO: 砲台を青い壁に沿って上下に動かす。(C)(実装:HW16A209 谷津 峻哉)
@@ -11,7 +9,6 @@
 // TODO: スコアを100点ずつ加算するようにし、5桁の表示に変える。(F)(実装:HW16A097 新甚 礁太)
 // TODO: PlayBGM()関数を使って、BGMを再生する。(G)(実装:HW16A207 森本 義基)
 // TODO: PlaySound()関数を使って、弾の発射時とターゲットに当たった時にSEを再生する。(H)(実装:HW16A072 黒津 勇斗)
->>>>>>> 3392292816189eb9f749bd576f6d2128784910e0
 
 
 Vector2 cloudPos;       //!< 雲の位置
@@ -55,7 +52,7 @@ void Update()
             PlaySound("se_maoudamashii_explosion06.mp3"); //追加文
         }
     }
-<<<<<<< HEAD
+
     //雲の位置を左から右に動かす。見えなくなったら左端に戻す(実装：HW16A207 森本義基)
     if (cloudPos.x > -550) {
         cloudPos.x += 60 * Time::deltaTime;
@@ -64,7 +61,7 @@ void Update()
         }
     }
     
-=======
+
     
     // TODO: 砲台を青い壁に沿って上下に動かす。(C)(実装:HW16A209 谷津 峻哉)
     if (cannonPos.y < -149) {
@@ -79,7 +76,6 @@ void Update()
         cannonPos.y -= 40 * Time::deltaTime;
     }
 
->>>>>>> 2bff9c392247e3c7f56fe7efaf4857bb46ea2195
     // 背景の描画
     Clear(Color::cyan);
     FillRect(Rect(-320, -240, 640, 100), Color::green);
@@ -101,7 +97,7 @@ void Update()
 
     // スコアの描画
     // TODO: スコアのサイズを大きくする。(E)(実装:HW16A209 谷津 峻哉)
-    SetFont("nicoca_v1.ttf", 150.0f);
+    SetFont("nicoca_v1.ttf", 100.0f);
     DrawText(FormatString("%02d", score), Vector2(-319, 129), Color::black);
     DrawText(FormatString("%02d", score), Vector2(-320, 130), Color::white);
 }
