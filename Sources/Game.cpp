@@ -1,6 +1,8 @@
 #include "Game.hpp"
 
 
+<<<<<<< HEAD
+=======
 // TODO: 砲台の位置を画面左に、ターゲットの位置を画面右に移動させる。(A)(実装:HW16A072 黒津 勇斗)
 // TODO: 雲の位置を左から右に動かす。見えなくなったら左端に戻す。(B)(実装:HW16A207 森本 義基)
 // TODO: 砲台を青い壁に沿って上下に動かす。(C)(実装:HW16A209 谷津 峻哉)
@@ -9,6 +11,7 @@
 // TODO: スコアを100点ずつ加算するようにし、5桁の表示に変える。(F)(実装:HW16A097 新甚 礁太)
 // TODO: PlayBGM()関数を使って、BGMを再生する。(G)(実装:HW16A207 森本 義基)
 // TODO: PlaySound()関数を使って、弾の発射時とターゲットに当たった時にSEを再生する。(H)(実装:HW16A072 黒津 勇斗)
+>>>>>>> 3392292816189eb9f749bd576f6d2128784910e0
 
 
 Vector2 cloudPos;       //!< 雲の位置
@@ -22,8 +25,8 @@ int ca = 0;
 void Start()
 {
     cloudPos = Vector2(-320, 100);
-    cannonPos = Vector2(-80, -150);
-    targetRect = Rect(80, -140, 40, 40);
+    cannonPos = Vector2(-310, -150); //砲台の位置を画面左に、ターゲットの位置を画面右に移動させる。(A)(実装:HW16A072 黒津 勇斗)
+    targetRect = Rect(280, -140, 40, 40); //砲台の位置を画面左に、ターゲットの位置を画面右に移動させる。(A)(実装:HW16A072 黒津 勇斗)
     bulletPos.x = -999;
     score = 0;
     
@@ -35,6 +38,7 @@ void Update()
     // 弾の発射
     if (bulletPos.x <= -999 && Input::GetKeyDown(KeyMask::Space)) {
         bulletPos = cannonPos + Vector2(50, 10);
+        PlaySound("se_maoudamashii_explosion03.mp3"); //PlaySound()関数を使って、弾の発射時とターゲットに当たった時にSEを再生する。(H)(実装:HW16A072 黒津 勇斗)
     }
 
     // 弾の移動(実装:HW16A097 新甚礁太)
@@ -46,6 +50,7 @@ void Update()
         if (targetRect.Overlaps(bulletRect)) {
             score += 100;         // スコアの加算
             bulletPos.x = -999; // 弾を発射可能な状態に戻す
+            PlaySound("se_maoudamashii_explosion06.mp3"); //追加文
         }
         if(bulletPos.x >= 320){
             bulletPos.x = -999;
